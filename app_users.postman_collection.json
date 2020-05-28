@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "d6acb289-49ca-4b12-bb4c-67b3df90f508",
+		"name": "app_users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/signin Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"company\":\"test\",\n\t\"email\":\"yoyo@hotmail.frssttta\",\n\t\"last_payment\":0,\n\t\"password\":\"pwssssttaaa\",\n\t\"url\":\"http://test.html\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/createuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"createuser"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
