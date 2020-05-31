@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/api/signin Copy",
+			"name": "http://localhost:3000/api/users/createuser",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"company\":\"test\",\n\t\"email\":\"yoyo@hotmail.frssttta\",\n\t\"last_payment\":0,\n\t\"password\":\"pwssssttaaa\",\n\t\"url\":\"http://test.html\"\n}"
+					"raw": "{\n\t\"company\":\"test\",\n\t\"email\":\"yoyo@hotmail.frs\",\n\t\"last_payment\":\"\",\n\t\"password\":\"pwssssttaaa\",\n\t\"url\":\"http://test.html\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/api/users/createuser",
@@ -31,6 +31,68 @@
 						"api",
 						"users",
 						"createuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"disabled": false,
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"yoyo@hotmail.frssttta\",\n\t\"password\":\"pwssssttaaa\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users/updatepayment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"disabled": false,
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":\"6\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/updatepayment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"updatepayment"
 					]
 				}
 			},

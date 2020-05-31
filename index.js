@@ -22,6 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/users', require('./routes/api/users'))
 
 // Start server
-app.listen(3000 || process.env.PORT, () => {
-  console.log(`Server listening`)
+app.listen(process.env.PORT, () => {
+  console.log(`Server listening : ` + process.env.PORT)
 })
