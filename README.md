@@ -41,6 +41,6 @@ add collection app_user.postman_collection.json
 yarn start
 ```
 
-http://localhost:3000/api/users/createuser
-http://localhost:3000/api/users/login
-http://localhost:3000/api/users/updatepayment
+http://localhost:3000/api/users/createuser </br>
+http://localhost:3000/api/users/login </br>
+http://localhost:3000/api/users/updatepayment </br>
