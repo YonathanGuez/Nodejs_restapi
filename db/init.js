@@ -5,6 +5,10 @@ var fs = require('fs');
 try {
   var data = fs.readFileSync('./db/db.sql', 'utf8');
   const connectionString = process.env.DATABASE_URL;
+  const userdb = process.env.USER_DB;
+  queryString = data.toString().replace(/postgres/gi, userdb);
+
+  console.log(queryString);
   const client = new pg.Client(connectionString);
   client.connect();
   const query = client.query(data.toString(), (err, res) => {
