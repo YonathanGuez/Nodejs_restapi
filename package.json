@@ -6,7 +6,8 @@
   "author": "YO-G <yonath-g@hotmail.fr>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "createdb": "node .\\db\\init.js"
   },
   "dependencies": {
     "csvtojson": "^2.0.10",
