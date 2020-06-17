@@ -44,3 +44,11 @@ yarn start
 http://localhost:3000/api/users/createuser </br>
 http://localhost:3000/api/users/login </br>
 http://localhost:3000/api/users/updatepayment </br>
+
+## Initialisation Db with knex an other way to use Postgres
+
+db/init.js call config.js
+
+```
+node db\init.js
+```
