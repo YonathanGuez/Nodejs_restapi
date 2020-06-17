@@ -15,9 +15,9 @@ router.post('/createuser', async (req, res, next) => {
       payment = `('${last_payment}')`;
     }
     const query = `
-  INSERT INTO users(company, email, 
+  INSERT INTO users(company, email, creation_date,
    last_payment, password, url,rules) 
-  VALUES (('${company}') , ('${email}'), ${payment},('${password}'),('${url}'),1)
+  VALUES (('${company}') , ('${email}'),Now(), ${payment},('${password}'),('${url}'),1)
   `;
     console.log(query);
     const result = await db.query(query);

@@ -13,7 +13,7 @@ const query = client.query(
           last_payment date,
           password character varying(255) NOT NULL,
           url character varying(255),
-          rule character varying(255)
+          rules character varying(255)
       );
       ALTER TABLE public.users OWNER TO postgres;
 
