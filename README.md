@@ -1,7 +1,14 @@
 # Nodejs_restapi
 
-Simple Restful API :
-We will use PostgreSQL Manually and also Script automation
+Simple Restful API with PostgreSQL:
+
+- Create
+- Login
+- Delete
+- Update
+- Script Test API End Point: jest
+
+We will use PostgreSQL Manually or with automation script
 
 ## Install all dependencies
 
@@ -21,7 +28,7 @@ PORT=3000
 
 ### Installing DB:
 
-#### Automation:
+#### How to Use Postgresql Automation Tables:
 
 I put a model of my db in db/db.sql
 init.js will change the username and run this into your postgres
@@ -32,7 +39,7 @@ Run :
 yarn createdb
 ```
 
-#### Manually :
+#### How to Use Postgresql Manually :
 
 ##### Build auto-increment :
 
@@ -72,4 +79,11 @@ yarn start
 
 http://localhost:3000/api/users/createuser </br>
 http://localhost:3000/api/users/login </br>
+http://localhost:3000/api/users/deleteuser </br>
 http://localhost:3000/api/users/updatepayment </br>
+
+## Test API End Point With jest
+
+```
+yarn test
+```

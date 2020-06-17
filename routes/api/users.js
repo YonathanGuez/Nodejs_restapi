@@ -8,25 +8,46 @@ const db = require('../../db');
 router.post('/createuser', async (req, res, next) => {
   try {
     const { company, email, last_payment, password, url } = req.body;
-    payment = '';
-    if (last_payment === '') {
-      payment = 'NULL';
+    const queryVerifEmail = `Select id from users where email='${email}'`;
+    const checkEmail = await db.query(queryVerifEmail);
+    //console.log(checkEmail);
+    if (checkEmail.rowCount === 0) {
+      let payment = '';
+      if (last_payment === '') {
+        payment = 'NULL';
+      } else {
+        payment = `('${last_payment}')`;
+      }
+      const query = `
+          INSERT INTO users(company, email, creation_date,
+          last_payment, password, url,rules)
+          VALUES (('${company}') , ('${email}'),Now(), ${payment},('${password}'),('${url}'),1)
+          `;
+      //console.log(query);
+      const result = await db.query(query);
+      res.status(201).json({ status: 'success', message: 'user created' });
+      await console.log('DONE : ' + result.command);
     } else {
-      payment = `('${last_payment}')`;
+      res.status(401).json({ status: 'fail', message: 'user created' });
     }
-    const query = `
-  INSERT INTO users(company, email, creation_date,
-   last_payment, password, url,rules) 
-  VALUES (('${company}') , ('${email}'),Now(), ${payment},('${password}'),('${url}'),1)
-  `;
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/deleteuser', async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const query = ` DELETE FROM users WHERE email='${email}'`;
     console.log(query);
     const result = await db.query(query);
-    res.status(201).json({ status: 'success', message: 'user created' });
+    res.status(201).json({ status: 'success', message: 'user Delete' });
     await console.log('DONE : ' + result.command);
   } catch (error) {
     next(error);
   }
 });
+
 //http://localhost:3000/api/users/login
 router.post('/login', async (req, res, next) => {
   try {
@@ -37,14 +58,14 @@ router.post('/login', async (req, res, next) => {
       WHERE email='${email}' and password='${password}'
     `;
     const { rows: result } = await db.query(query);
-    console.log('DONE : ' + result[0].id + ' and ' + result[0].company);
+    // console.log('DONE : ' + result[0].id + ' and ' + result[0].company);
     if (result.length == 0) {
       feed = { id: 0, company: 'NULL', error: '1' };
       result.push(feed);
-      res.send(result[0]);
+      res.status(401).send(result[0]);
     } else {
       result[0].error = '0';
-      res.send(result[0]);
+      res.status(201).send(result[0]);
     }
   } catch (error) {
     next(error);

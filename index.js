@@ -1,27 +1,5 @@
-require('dotenv').config()
-const express = require('express')
-const path = require('path')
+const server = require('./server.js');
 
-const app = express()
-// init middleware ==> known what is my request
-const logger = (req, res, next) => {
-  // console.log(res)
-  console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`)
-  next()
-}
-app.use(logger)
-
-// Body parser Middleware we need this for POST end pars the Body
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-
-// Static folder : public with 2 files : about.html and index.html
-app.use(express.static(path.join(__dirname, 'public')))
-
-// Routes/api/members.js => router
-app.use('/api/users', require('./routes/api/users'))
-
-// Start server
-app.listen(process.env.PORT, () => {
-  console.log(`Server listening : ` + process.env.PORT)
-})
+server.listen(3000, () => {
+  console.log('Server has started!');
+});

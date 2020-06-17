@@ -7,7 +7,14 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon index.js",
-    "createdb": "node ./db/init.js"
+    "createdb": "node ./db/init.js",
+    "test": "jest --detectOpenHandles"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "dependencies": {
     "csvtojson": "^2.0.10",
@@ -25,7 +32,9 @@
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "2.5.0",
+    "jest": "^26.0.1",
     "nodemon": "^2.0.2",
-    "prettier": "^2.0.1"
+    "prettier": "^2.0.1",
+    "supertest": "^4.0.2"
   }
 }
