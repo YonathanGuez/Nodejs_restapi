@@ -4,7 +4,11 @@
 const app = require('../server'); // Link to your server file
 const supertest = require('supertest');
 const request = supertest(app);
+const { createBD } = require('../db/init');
 
+beforeAll(() => {
+  return createBD();
+});
 /**
  * Check test Api Work
  */
@@ -20,7 +24,7 @@ it('Gets the test endpoint', async (done) => {
 /**
  * Post createuser
  */
-it('POST Create  Request', async (done) => {
+test('POST Create  Request', async (done) => {
   // Sends POST Create  Request to /test endpoint
   const res = await request.post('/api/users/createuser').send({
     company: 'test',
@@ -34,12 +38,11 @@ it('POST Create  Request', async (done) => {
   expect(res.body.status).toBe('success');
   done();
 });
-
 /**
  * Post createuser Fail
  * if we want an other creation with same email
  */
-it('POST Create user same mail : must fail', async (done) => {
+test('POST Create user same mail : must fail', async (done) => {
   // Sends POST Create  Request to /test endpoint
   const res = await request.post('/api/users/createuser').send({
     company: 'test',
@@ -57,7 +60,7 @@ it('POST Create user same mail : must fail', async (done) => {
 /**
  * Post Login : success
  */
-it('POST Login user', async (done) => {
+test('POST Login user', async (done) => {
   // Sends POST Create  Request to /test endpoint
   const res = await request.post('/api/users/login').send({
     email: 'aaaa@hotmail.fr',
@@ -71,7 +74,7 @@ it('POST Login user', async (done) => {
 /**
  * Post Login : fail bad password
  */
-it('POST Login user bad password', async (done) => {
+test('POST Login user bad password', async (done) => {
   // Sends POST Create  Request to /test endpoint
   const res = await request.post('/api/users/login').send({
     email: 'aaaa@hotmail.fr',
@@ -86,7 +89,7 @@ it('POST Login user bad password', async (done) => {
 /**
  * Post Login : fail bad email
  */
-it('POST Login user bad password', async (done) => {
+test('POST Login user bad password', async (done) => {
   // Sends POST Create  Request to /test endpoint
   const res = await request.post('/api/users/login').send({
     email: 'addd@hotmail.fr',
@@ -101,7 +104,7 @@ it('POST Login user bad password', async (done) => {
 /**
  * Post Delete : success
  */
-it('POST Delete user', async (done) => {
+test('POST Delete user', async (done) => {
   // Sends POST Create  Request to /test endpoint
   const res = await request.post('/api/users/deleteuser').send({
     email: 'aaaa@hotmail.fr',

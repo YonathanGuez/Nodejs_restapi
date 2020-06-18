@@ -24,8 +24,12 @@ router.post('/createuser', async (req, res, next) => {
           VALUES (('${company}') , ('${email}'),Now(), ${payment},('${password}'),('${url}'),1)
           `;
       //console.log(query);
-      const result = await db.query(query);
-      res.status(201).json({ status: 'success', message: 'user created' });
+      try {
+        const result = await db.query(query);
+        res.status(201).json({ status: 'success', message: 'user created' });
+      } catch (error) {
+        next(error);
+      }
       await console.log('DONE : ' + result.command);
     } else {
       res.status(401).json({ status: 'fail', message: 'user created' });

@@ -33,10 +33,10 @@ PORT=3000
 I put a model of my db in db/db.sql
 init.js will change the username and run this into your postgres
 
-Run :
+Run : that will call db/ini.js with createDB
 
 ```
-yarn createdb
+yarn test
 ```
 
 #### How to Use Postgresql Manually :

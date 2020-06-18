@@ -7,8 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon index.js",
-    "createdb": "node ./db/init.js",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --runInBand"
   },
   "jest": {
     "testEnvironment": "node",
