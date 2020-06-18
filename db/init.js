@@ -1,5 +1,5 @@
 const pg = require('pg');
-require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: './.env.dev' });
 var fs = require('fs');
 
 exports.createBD = async function () {

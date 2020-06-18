@@ -30,7 +30,6 @@ router.post('/createuser', async (req, res, next) => {
       } catch (error) {
         next(error);
       }
-      await console.log('DONE : ' + result.command);
     } else {
       res.status(401).json({ status: 'fail', message: 'user created' });
     }

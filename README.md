@@ -87,3 +87,69 @@ http://localhost:3000/api/users/updatepayment </br>
 ```
 yarn test
 ```
+
+## Attention on windows Docker work on an other IP :
+
+Like 192.168.99.100 for me in my Local
+
+## Dockerization :
+
+### Simple Dockerfile:
+
+Run only server with Docker file :
+
+```
+ docker build -t test:1 .
+ docker run -it -p 3000:3000 test:1
+```
+
+enter in the container
+
+```
+docker run -it -p 3000:3000 test:1 sh
+```
+
+Run Postgres :
+
+```
+docker run -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=root -d postgres
+```
+
+### Docker-compose :
+
+build first time :
+
+```
+docker-compose up
+```
+
+or
+
+build first time in background:
+
+```
+docker-compose up -d
+```
+
+Run service :docker-compose run '<'service'>'
+
+```
+docker-compose run app_restapi
+```
+
+rebuild the image:
+
+```
+docker-compose build
+```
+
+Stop the service :
+
+```
+docker-compose down
+```
+
+##### Docker-compose command :
+
+docker-compose ps
+docker-compose images

@@ -1,12 +1,9 @@
-FROM node:10
+FROM node:12.16.1-alpine3.9
+# RUN mkdir -p /usr/src/app/test
 # Create app directory
-WORKDIR /usr/src/app
-
-COPY package.json .
+WORKDIR /usr/src/app/
+ADD . .
 # install all config
-RUN npm install
-# Bundle app source
-COPY . .
-
-EXPOSE 80
-CMD [ "node", "server.js" ]
+RUN yarn
+CMD [ "yarn", "start" ]
+EXPOSE 3000
